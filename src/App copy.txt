@@ -1,0 +1,71 @@
+import { useState } from "react";
+
+export default function App() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("http://localhost:5000/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <div className="bg-linear-to-b from-[#003D9A] to-[#2B0074]">
+      <div className="h-[80px] w-full flex">
+        <div>
+          <p className=""></p>
+        </div>
+      </div>
+      <div className="min-h-screen text-white flex flex-col items-center justify-center p-6">
+        <h1 className="text-5xl font-bold mb-4 text-center font-alfa">ATARS MADE FUN.</h1>
+
+        <p className="text-lg opacity-70 text-center mb-10 max-w-lg font-oswald">
+          ATAR's got you anxious? Make it worse! It's like footy tipping, but YOU are the player.
+        </p>
+
+        <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4 font-bitcount">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="enter your email to get started..."
+            className="p-3 rounded-xl text-white"
+          />
+
+          <button
+            type="submit"
+            className="bg-white text-black font-semibold py-3 rounded-xl hover:bg-gray-200 transition"
+          >
+            Get Started
+          </button>
+
+          {status === "loading" && (
+            <p className="text-sm text-yellow-400 text-center">Sending...</p>
+          )}
+          {status === "success" && (
+            <p className="text-sm text-green-400 text-center">Subscribed!</p>
+          )}
+          {status === "error" && (
+            <p className="text-sm text-red-400 text-center">Something went wrong.</p>
+          )}
+        </form>
+
+        <footer className="opacity-40 text-sm mt-16">©2025 Pigeon Software · ATARtips</footer>
+      </div>
+    </div>
+  );
+}

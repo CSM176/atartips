@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bitcount+Prop+Single:wght@100..900&family=Oswald:wght@200..700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-oswald: "Oswald", sans-serif;
+  --font-bitcount: "Bitcount Prop Single", sans-serif;
+  --font-alfa: "Alfa Slab One", sans-serif;
+}
