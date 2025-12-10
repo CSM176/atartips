@@ -26,7 +26,7 @@ export default function App() {
       <div className="min-h-screen bg-linear-to-b from-[#003D9A] to-[#2B0074] text-white flex flex-col items-center justify-center p-6">
         <h1 className="text-5xl font-bold mb-4 text-center font-alfa">Sorry, we're full!</h1>
         <p className="text-lg opacity-70 text-center mb-10 max-w-lg font-oswald">
-          Too many punters have overwhelmed our servers! Check back later.
+          Too many punters have signed up! Check back later.
         </p>
         <footer className="opacity-40 text-sm mt-16">©2025 Pigeon Software · ATARtips · No money is exchanged on this site</footer>
       </div>
