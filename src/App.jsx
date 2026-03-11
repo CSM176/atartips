@@ -8,17 +8,7 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-    try {
-      const res = await fetch("https://api.atartips.com/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error();
-      setIsFull(true);
-    } catch (err) {
-      setStatus("error");
-    }
+    setIsFull(true);
   };
 
   if (isFull) {
